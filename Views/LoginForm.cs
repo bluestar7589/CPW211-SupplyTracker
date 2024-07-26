@@ -26,17 +26,22 @@ namespace SupplyTracker
             User user = new User();
             if (user.VerifyLogin(username, password))
             {
-                MessageBox.Show("Login successful");
+                MessageBox.Show("Login successful","Success");
+                DialogResult = DialogResult.OK;
                 
                 // Hide the login form
                 this.Hide();
-                // Grab the main form
-                Form1 mainForm = new Form1();
-                // Display the main form
-                mainForm.Show();
             } else
             {
-                MessageBox.Show("Login failed. Please check your username and password and try again.");
+                DialogResult result =  MessageBox.Show("Login failed. Please check your username and password and try again.","Error",MessageBoxButtons.RetryCancel);
+                if (result == DialogResult.Cancel)
+                {
+                    DialogResult = DialogResult.Cancel;
+                }
+                else 
+                {
+                    DialogResult = DialogResult.Retry;
+                }
             }
         }
     }

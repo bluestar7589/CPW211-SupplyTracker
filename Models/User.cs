@@ -32,18 +32,6 @@ public partial class User
     public DateTime? LastDateLogin { get; set; }
 
     /// <summary>
-    /// Displays true if login was successful, displays false if not
-    /// </summary>
-    public bool LoginAttempt { get; set; }
-    /// <summary>
-    /// Default the login attempt to false on user object creation
-    /// </summary>
-    public User()
-    {
-        LoginAttempt = false;
-    }
-
-    /// <summary>
     /// Once the Login button is pressed, this actuates 
     /// </summary>
     public bool VerifyLogin(string username, string password)
@@ -58,7 +46,6 @@ public partial class User
             {
                 user.LastDateLogin = DateTime.Now;
                 context.SaveChanges();
-                LoginAttempt = true;
                 return true;
             }
             // If not, return false
