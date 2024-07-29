@@ -1,3 +1,5 @@
+using SupplyTracker.Views;
+
 namespace SupplyTracker
 {
     public partial class Form1 : Form
@@ -12,7 +14,7 @@ namespace SupplyTracker
             LoginForm loginForm = new LoginForm();
             this.Enabled = false;
             // Keep showing the login form until success or cancel (exit) the program.
-            while (true) 
+            while (true)
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
@@ -23,10 +25,22 @@ namespace SupplyTracker
                 {
                     Application.Exit();// Exit the program
                 }
-                else {
-                    MessageBox.Show("Username or password is not correct!!! Please try again !!!","Error");
+                else
+                {
+                    MessageBox.Show("Username or password is not correct!!! Please try again !!!", "Error");
                 }
             }
+        }
+
+        /// <summary>
+        /// This method will open the product form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void productManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductForm productForm = new ProductForm();
+            productForm.ShowDialog();
         }
     }
 }
