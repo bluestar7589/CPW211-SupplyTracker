@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SupplyTracker.Databases;
 using SupplyTracker.Models;
 
 namespace SupplyTracker
@@ -24,25 +25,32 @@ namespace SupplyTracker
             string password = txtPassword.Text;
 
             User user = new User();
-            if (user.VerifyLogin(username, password))
+            UserDB userdb = new UserDB();
+            if (userdb.VerifyLogin(username, password))
             {
-                MessageBox.Show("Login successful","Success");
+                MessageBox.Show("Login successful", "Success");
                 DialogResult = DialogResult.OK;
-                
+
                 // Hide the login form
                 this.Hide();
-            } else
+            }
+            else
             {
-                DialogResult result =  MessageBox.Show("Login failed. Please check your username and password and try again.","Error",MessageBoxButtons.RetryCancel);
+                DialogResult result = MessageBox.Show("Login failed. Please check your username and password and try again.", "Error", MessageBoxButtons.RetryCancel);
                 if (result == DialogResult.Cancel)
                 {
                     DialogResult = DialogResult.Cancel;
                 }
-                else 
+                else
                 {
                     DialogResult = DialogResult.Retry;
                 }
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
