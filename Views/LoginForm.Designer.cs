@@ -56,6 +56,7 @@
             btnBack.TabIndex = 1;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // lblUsername
             // 
