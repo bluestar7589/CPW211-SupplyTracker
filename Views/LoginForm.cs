@@ -25,8 +25,8 @@ namespace SupplyTracker
             string password = txtPassword.Text;
 
             User user = new User();
-            UserDB userdb = new UserDB();
-            if (userdb.VerifyLogin(username, password))
+            //UserDB userdb = new UserDB();
+            if (user.VerifyLogin(username, password))
             {
                 MessageBox.Show("Login successful", "Success");
                 DialogResult = DialogResult.OK;
