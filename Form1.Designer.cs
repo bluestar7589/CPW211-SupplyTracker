@@ -97,8 +97,9 @@
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(171, 22);
+            userManagementToolStripMenuItem.Size = new Size(180, 22);
             userManagementToolStripMenuItem.Text = "User Management";
+
             // 
             // Form1
             // 

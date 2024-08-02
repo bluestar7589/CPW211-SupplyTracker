@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SupplyTracker.Databases;
+
 using SupplyTracker.Models;
+using SupplyTracker.Databases;
 
 namespace SupplyTracker
 {
@@ -52,5 +53,6 @@ namespace SupplyTracker
         {
             Application.Exit();
         }
+
     }
 }
