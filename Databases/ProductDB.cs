@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SupplyTracker.Databases
 {
-    internal class ProductDB
+    public class ProductDB
     {
         /// <summary>
         /// Create the ProductDTO class to store the product information with join condition
