@@ -40,7 +40,8 @@ namespace SupplyTracker
         private void productManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProductForm productForm = new ProductForm();
-            productForm.ShowDialog();
+            productForm.MdiParent = this;
+            productForm.Show();
         }
 
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)

@@ -99,7 +99,7 @@
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
             userManagementToolStripMenuItem.Size = new Size(180, 22);
             userManagementToolStripMenuItem.Text = "User Management";
-            userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
+
             // 
             // Form1
             // 
@@ -107,6 +107,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
+            IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Dashboard";

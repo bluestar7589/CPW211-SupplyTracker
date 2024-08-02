@@ -183,12 +183,28 @@ namespace SupplyTracker.Views
                 };
                 if (btnSubmit.Text.Equals("Add"))
                 {
-                    ProductDB.AddProduct(product);
-                    
+                    try
+                    {
+                        ProductDB.AddProduct(product);
+                        MessageBox.Show("Added successfully !!!", "Success");
+                    }
+                    catch (Exception exc) {
+                        MessageBox.Show(exc.Message.ToString(), "Error");
+                    }
+
+
                 }
                 else 
                 {
-                    ProductDB.UpdateProduct(product);
+                    try
+                    {
+                        ProductDB.UpdateProduct(product);
+                        MessageBox.Show("Deleted successfully !!!", "Success");
+                    }
+                    catch (Exception exc) 
+                    {
+                        MessageBox.Show(exc.Message.ToString(), "Error");
+                    }
                 }
                 // Load the list of product and reset the form
                 LoadProductList();
@@ -243,7 +259,6 @@ namespace SupplyTracker.Views
         private void btnClear_Click(object sender, EventArgs e)
         {
             ResetForm();
-            
         }
 
         /// <summary>
@@ -255,13 +270,20 @@ namespace SupplyTracker.Views
         {
             if (lstProduct.SelectedItems.Count > 0)
             {
-                Product product = new Product
+                try
                 {
-                    ProductId = ((ProductDTO)lstProduct.SelectedItems[0].Tag).ProductID
-                };
-                ProductDB.DeleteProduct(product);
-                LoadProductList();
-                ResetForm();
+                    Product product = new Product
+                    {
+                        ProductId = ((ProductDTO)lstProduct.SelectedItems[0].Tag).ProductID
+                    };
+                    ProductDB.DeleteProduct(product);
+                    LoadProductList();
+                    ResetForm();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message.ToString(), "Error");
+                }
             }
             else
             {
