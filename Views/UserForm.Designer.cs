@@ -34,16 +34,16 @@
             lblPassword = new Label();
             lblRole = new Label();
             lblLastLogin = new Label();
-            txtUserId = new TextBox();
+            txtUserID = new TextBox();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             dtpLastLogin = new DateTimePicker();
             cboRole = new ComboBox();
             lstUser = new ListView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btnAdd = new Button();
+            btnDelete = new Button();
+            btnClear = new Button();
+            btnExit = new Button();
             SuspendLayout();
             // 
             // lblCaption
@@ -101,12 +101,12 @@
             lblLastLogin.TabIndex = 6;
             lblLastLogin.Text = "Last Login Date";
             // 
-            // txtUserId
+            // txtUserID
             // 
-            txtUserId.Location = new Point(160, 98);
-            txtUserId.Name = "txtUserId";
-            txtUserId.Size = new Size(100, 23);
-            txtUserId.TabIndex = 7;
+            txtUserID.Location = new Point(160, 98);
+            txtUserID.Name = "txtUserID";
+            txtUserID.Size = new Size(100, 23);
+            txtUserID.TabIndex = 7;
             // 
             // txtUsername
             // 
@@ -145,58 +145,63 @@
             lstUser.Size = new Size(375, 245);
             lstUser.TabIndex = 23;
             lstUser.UseCompatibleStateImageBehavior = false;
+            lstUser.SelectedIndexChanged += lstUser_SelectedIndexChanged;
             // 
-            // button1
+            // btnAdd
             // 
-            button1.Location = new Point(139, 398);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 24;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = true;
+            btnAdd.Location = new Point(139, 398);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(75, 23);
+            btnAdd.TabIndex = 24;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // button2
+            // btnDelete
             // 
-            button2.Location = new Point(282, 398);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 25;
-            button2.Text = "Delete";
-            button2.UseVisualStyleBackColor = true;
+            btnDelete.Location = new Point(282, 398);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 25;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
-            // button3
+            // btnClear
             // 
-            button3.Location = new Point(427, 398);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 26;
-            button3.Text = "Clear";
-            button3.UseVisualStyleBackColor = true;
+            btnClear.Location = new Point(427, 398);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 26;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
-            // button4
+            // btnExit
             // 
-            button4.Location = new Point(568, 398);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 27;
-            button4.Text = "Exit";
-            button4.UseVisualStyleBackColor = true;
+            btnExit.Location = new Point(568, 398);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(75, 23);
+            btnExit.TabIndex = 27;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnExit);
+            Controls.Add(btnClear);
+            Controls.Add(btnDelete);
+            Controls.Add(btnAdd);
             Controls.Add(lstUser);
             Controls.Add(cboRole);
             Controls.Add(dtpLastLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
-            Controls.Add(txtUserId);
+            Controls.Add(txtUserID);
             Controls.Add(lblLastLogin);
             Controls.Add(lblRole);
             Controls.Add(lblPassword);
@@ -218,15 +223,15 @@
         private Label lblPassword;
         private Label lblRole;
         private Label lblLastLogin;
-        private TextBox txtUserId;
+        private TextBox txtUserID;
         private TextBox txtUsername;
         private TextBox txtPassword;
         private DateTimePicker dtpLastLogin;
         private ComboBox cboRole;
         private ListView lstUser;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnAdd;
+        private Button btnDelete;
+        private Button btnClear;
+        private Button btnExit;
     }
 }

@@ -42,5 +42,11 @@ namespace SupplyTracker
             ProductForm productForm = new ProductForm();
             productForm.ShowDialog();
         }
+
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserForm userForm = new UserForm();
+            userForm.ShowDialog();
+        }
     }
 }

@@ -30,13 +30,13 @@
         {
             menuStrip1 = new MenuStrip();
             productsToolStripMenuItem = new ToolStripMenuItem();
+            productManagementToolStripMenuItem = new ToolStripMenuItem();
+            supplyManagementToolStripMenuItem = new ToolStripMenuItem();
             vendorsToolStripMenuItem = new ToolStripMenuItem();
             ordersToolStripMenuItem = new ToolStripMenuItem();
             departmentsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
-            productManagementToolStripMenuItem = new ToolStripMenuItem();
-            supplyManagementToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,6 +55,19 @@
             productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             productsToolStripMenuItem.Size = new Size(66, 20);
             productsToolStripMenuItem.Text = "Products";
+            // 
+            // productManagementToolStripMenuItem
+            // 
+            productManagementToolStripMenuItem.Name = "productManagementToolStripMenuItem";
+            productManagementToolStripMenuItem.Size = new Size(190, 22);
+            productManagementToolStripMenuItem.Text = "Product Management";
+            productManagementToolStripMenuItem.Click += productManagementToolStripMenuItem_Click;
+            // 
+            // supplyManagementToolStripMenuItem
+            // 
+            supplyManagementToolStripMenuItem.Name = "supplyManagementToolStripMenuItem";
+            supplyManagementToolStripMenuItem.Size = new Size(190, 22);
+            supplyManagementToolStripMenuItem.Text = "Supply Management";
             // 
             // vendorsToolStripMenuItem
             // 
@@ -84,21 +97,9 @@
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(171, 22);
+            userManagementToolStripMenuItem.Size = new Size(180, 22);
             userManagementToolStripMenuItem.Text = "User Management";
-            // 
-            // productManagementToolStripMenuItem
-            // 
-            productManagementToolStripMenuItem.Name = "productManagementToolStripMenuItem";
-            productManagementToolStripMenuItem.Size = new Size(190, 22);
-            productManagementToolStripMenuItem.Text = "Product Management";
-            productManagementToolStripMenuItem.Click += productManagementToolStripMenuItem_Click;
-            // 
-            // supplyManagementToolStripMenuItem
-            // 
-            supplyManagementToolStripMenuItem.Name = "supplyManagementToolStripMenuItem";
-            supplyManagementToolStripMenuItem.Size = new Size(190, 22);
-            supplyManagementToolStripMenuItem.Text = "Supply Management";
+            userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 
             // Form1
             // 
