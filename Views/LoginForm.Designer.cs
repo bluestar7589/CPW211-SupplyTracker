@@ -39,7 +39,7 @@
             // btnLogin
             // 
             btnLogin.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold);
-            btnLogin.Location = new Point(422, 297);
+            btnLogin.Location = new Point(427, 210);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(159, 52);
             btnLogin.TabIndex = 0;
@@ -50,12 +50,13 @@
             // btnBack
             // 
             btnBack.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold);
-            btnBack.Location = new Point(422, 210);
+            btnBack.Location = new Point(427, 297);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(159, 52);
             btnBack.TabIndex = 1;
-            btnBack.Text = "Back";
+            btnBack.Text = "Exit";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // lblUsername
             // 

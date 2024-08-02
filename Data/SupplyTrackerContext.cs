@@ -188,11 +188,11 @@ public partial class SupplyTrackerContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC826BF9D5");
+            entity.HasKey(e => e.UserID).HasName("PK__Users__1788CCAC826BF9D5");
 
             entity.HasIndex(e => e.Username, "UQ__Users__536C85E49408954E").IsUnique();
 
-            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.UserID).HasColumnName("UserID");
             entity.Property(e => e.LastDateLogin).HasColumnType("datetime");
             entity.Property(e => e.Password).HasMaxLength(255);
             entity.Property(e => e.Role).HasMaxLength(50);
