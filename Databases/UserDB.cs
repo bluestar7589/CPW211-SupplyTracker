@@ -3,6 +3,7 @@ using SupplyTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,16 +34,33 @@ namespace SupplyTracker.Databases
             public DateTime? LastDateLogin { get; set; }
         }
 
-
-
-
         /// <summary>
-        /// This method to add a new user to the database
+        /// This method grabs all users in the database
+        /// </summary>
+        /// <returns>Returns a list of all users in the database</returns>
+        public static List<UserDTO> GetAllUsers()
+        {
+            using (SupplyTrackerContext context = new())
+            {
+                var lstUser = from user in context.Users
+                              select new UserDTO
+                              {
+                                  UserID = user.UserID,
+                                  Username = user.Username,
+                                  Password = user.Password,
+                                  Role = user.Role,
+                                  LastDateLogin = user.LastDateLogin
+                              };
+                return lstUser.ToList();
+            }
+        }
+        /// <summary>
+        /// This method adds a new user to the database
         /// </summary>
         /// <param name="user"></param>
         public static void AddUser(User user)
         {
-            using (SupplyTrackerContext context = new SupplyTrackerContext())
+            using (SupplyTrackerContext context = new())
             {
                 context.Users.Add(user);
                 context.SaveChanges();
@@ -55,7 +73,7 @@ namespace SupplyTracker.Databases
         /// <param name="user"></param>
         public static void UpdateUser(User user)
         {
-            using (SupplyTrackerContext context = new SupplyTrackerContext())
+            using (SupplyTrackerContext context = new())
             {
                 context.Users.Update(user);
                 context.SaveChanges();
@@ -66,7 +84,7 @@ namespace SupplyTracker.Databases
         /// This method to delete the user from the database
         /// </summary>
         /// <param name="user"></param>
-        public static void DeleteProduct(User user)
+        public static void DeleteUser(User user)
         {
             using (SupplyTrackerContext context = new SupplyTrackerContext())
             {
@@ -74,12 +92,6 @@ namespace SupplyTracker.Databases
                 context.SaveChanges();
             }
         }
-
-
-
-
-
-
 
         /// <summary>
         /// Once the Login button is pressed, this actuates 
@@ -106,5 +118,7 @@ namespace SupplyTracker.Databases
             }
 
         }
+
+
     }
 }
