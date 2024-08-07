@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             lblCaption = new Label();
-            lblUserID = new Label();
             lblUsername = new Label();
             lblPassword = new Label();
             lblRole = new Label();
-            lblLastLogin = new Label();
-            txtUserID = new TextBox();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
-            dtpLastLogin = new DateTimePicker();
             cboRole = new ComboBox();
             lstUser = new ListView();
             btnAdd = new Button();
             btnDelete = new Button();
             btnClear = new Button();
             btnExit = new Button();
+            txtUserID = new TextBox();
+            lblUserID = new Label();
             SuspendLayout();
             // 
             // lblCaption
@@ -55,15 +53,6 @@
             lblCaption.Size = new Size(185, 28);
             lblCaption.TabIndex = 1;
             lblCaption.Text = "User Management";
-            // 
-            // lblUserID
-            // 
-            lblUserID.AutoSize = true;
-            lblUserID.Location = new Point(40, 98);
-            lblUserID.Name = "lblUserID";
-            lblUserID.Size = new Size(41, 15);
-            lblUserID.TabIndex = 2;
-            lblUserID.Text = "UserID";
             // 
             // lblUsername
             // 
@@ -92,22 +81,6 @@
             lblRole.TabIndex = 5;
             lblRole.Text = "Role";
             // 
-            // lblLastLogin
-            // 
-            lblLastLogin.AutoSize = true;
-            lblLastLogin.Location = new Point(40, 320);
-            lblLastLogin.Name = "lblLastLogin";
-            lblLastLogin.Size = new Size(88, 15);
-            lblLastLogin.TabIndex = 6;
-            lblLastLogin.Text = "Last Login Date";
-            // 
-            // txtUserID
-            // 
-            txtUserID.Location = new Point(160, 98);
-            txtUserID.Name = "txtUserID";
-            txtUserID.Size = new Size(100, 23);
-            txtUserID.TabIndex = 7;
-            // 
             // txtUsername
             // 
             txtUsername.Location = new Point(160, 149);
@@ -119,32 +92,31 @@
             // 
             txtPassword.Location = new Point(160, 212);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(145, 23);
             txtPassword.TabIndex = 9;
             // 
-            // dtpLastLogin
-            // 
-            dtpLastLogin.Location = new Point(160, 320);
-            dtpLastLogin.Name = "dtpLastLogin";
-            dtpLastLogin.Size = new Size(200, 23);
-            dtpLastLogin.TabIndex = 10;
-            // 
             // cboRole
             // 
+            cboRole.Enabled = false;
             cboRole.FormattingEnabled = true;
+            cboRole.Items.AddRange(new object[] { "User", "Admin" });
             cboRole.Location = new Point(160, 269);
             cboRole.Name = "cboRole";
             cboRole.Size = new Size(145, 23);
             cboRole.TabIndex = 11;
+            cboRole.Text = "User";
             // 
             // lstUser
             // 
             lstUser.FullRowSelect = true;
+            lstUser.GridLines = true;
             lstUser.Location = new Point(385, 98);
             lstUser.Name = "lstUser";
             lstUser.Size = new Size(375, 245);
             lstUser.TabIndex = 23;
             lstUser.UseCompatibleStateImageBehavior = false;
+            lstUser.View = View.Details;
             lstUser.SelectedIndexChanged += lstUser_SelectedIndexChanged;
             // 
             // btnAdd
@@ -187,26 +159,41 @@
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
+            // txtUserID
+            // 
+            txtUserID.Location = new Point(160, 90);
+            txtUserID.Name = "txtUserID";
+            txtUserID.ReadOnly = true;
+            txtUserID.Size = new Size(97, 23);
+            txtUserID.TabIndex = 29;
+            // 
+            // lblUserID
+            // 
+            lblUserID.AutoSize = true;
+            lblUserID.Location = new Point(40, 93);
+            lblUserID.Name = "lblUserID";
+            lblUserID.Size = new Size(41, 15);
+            lblUserID.TabIndex = 28;
+            lblUserID.Text = "UserID";
+            // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtUserID);
+            Controls.Add(lblUserID);
             Controls.Add(btnExit);
             Controls.Add(btnClear);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(lstUser);
             Controls.Add(cboRole);
-            Controls.Add(dtpLastLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
-            Controls.Add(txtUserID);
-            Controls.Add(lblLastLogin);
             Controls.Add(lblRole);
             Controls.Add(lblPassword);
             Controls.Add(lblUsername);
-            Controls.Add(lblUserID);
             Controls.Add(lblCaption);
             Name = "UserForm";
             Text = "UserForm";
@@ -218,20 +205,18 @@
         #endregion
 
         private Label lblCaption;
-        private Label lblUserID;
         private Label lblUsername;
         private Label lblPassword;
         private Label lblRole;
-        private Label lblLastLogin;
-        private TextBox txtUserID;
         private TextBox txtUsername;
         private TextBox txtPassword;
-        private DateTimePicker dtpLastLogin;
         private ComboBox cboRole;
         private ListView lstUser;
         private Button btnAdd;
         private Button btnDelete;
         private Button btnClear;
         private Button btnExit;
+        private TextBox txtUserID;
+        private Label lblUserID;
     }
 }

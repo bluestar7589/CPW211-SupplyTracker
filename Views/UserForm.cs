@@ -1,52 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SupplyTracker.Databases;
-using SupplyTracker.Data;
 using SupplyTracker.Models;
-using static SupplyTracker.Databases.UserDB;
-using static SupplyTracker.Databases.ProductDB;
 
 namespace SupplyTracker.Views
 {
     public partial class UserForm : Form
     {
+        private User _currentUser; // Holds the currently logged-in user
+
         public UserForm()
         {
             InitializeComponent();
+            _currentUser = Form1.LoggedInUser; // Get the logged-in user
+            this.Load += new EventHandler(UserForm_Load); // Ensure the Load event is connected
         }
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-            using SupplyTrackerContext dbContext = new SupplyTrackerContext();
-            UserDB UserDB = new UserDB();
 
-            // LINQ method syntax
-            List<User> userList = dbContext.Users.ToList();
+            // Add columns to the list view
+            if (lstUser.Columns.Count == 0)
+            {
+                lstUser.Columns.Add("UserID", 100);
+                lstUser.Columns.Add("Username", 150);
+                lstUser.Columns.Add("Password", 150);
+                lstUser.Columns.Add("Role", 100);
+                lstUser.Columns.Add("Last Date Login", 120);
+            }
 
-            // Load the user list
-            LoadUserList();
+            LoadUserList(); // Load the user data into the ListView
 
-
+            // If the current user is an admin,
+            // let them change a user's Role
+            cboRole.Enabled = _currentUser.Role == "Admin";
         }
-        /// <summary>
-        /// Creates a new user in the database
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+        public void LoadUserList()
+        {
+            lstUser.Items.Clear(); // Clear existing items in the list view
+
+            var users = UserDB.GetAllUsers();
+
+            if (users == null || users.Count == 0)
+            {
+                MessageBox.Show("No users found to display.");
+                return;
+            }
+
+            foreach (var user in users)
+            {
+                if (user == null)
+                {
+                    MessageBox.Show("Found a null user object."); // Debugging message
+                    continue;
+                }
+
+                var listViewItem = new ListViewItem(user.UserID.ToString());
+
+                listViewItem.SubItems.Add(user.Username);
+                listViewItem.SubItems.Add(user.Password);
+                listViewItem.SubItems.Add(user.Role);
+                listViewItem.SubItems.Add(user.LastDateLogin?.ToString("MM/dd/yyyy"));
+                listViewItem.Tag = user;
+
+                lstUser.Items.Add(listViewItem);
+            }
+
+            lstUser.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (IsValidAllData())
             {
                 User user = new User()
                 {
-                    UserID = lstUser.SelectedItems.Count > 0 ? ((UserDTO)lstUser.SelectedItems[0].Tag).UserID : 0,
+                    UserID = lstUser.SelectedItems.Count > 0 ? ((User)lstUser.SelectedItems[0].Tag).UserID : 0,
                     Username = txtUsername.Text,
                     Password = txtPassword.Text,
                     Role = cboRole.Text,
@@ -60,78 +92,44 @@ namespace SupplyTracker.Views
                 {
                     UserDB.UpdateUser(user);
                 }
+
                 // Load the list of users and reset the form
                 LoadUserList();
                 ResetForm();
             }
-
         }
 
-        /// <summary>
-        /// This method to load all users in the database on the list
-        /// </summary>
-        public void LoadUserList()
-        {
-            var users = UserDB.GetAllUsers();
-
-            foreach (var user in users)
-            {
-                var ListViewItem = new ListViewItem(user.UserID.ToString());
-                ListViewItem.SubItems.Add(user.Username);
-                ListViewItem.SubItems.Add(user.Password);
-                ListViewItem.SubItems.Add(user.Role);
-                ListViewItem.SubItems.Add(user.LastDateLogin.ToString());
-                ListViewItem.Tag = user;
-                lstUser.Items.Add(ListViewItem);
-            }
-        }
-
-        /// <summary>
-        /// This method to clear the form when needed
-        /// </summary>
         private void ResetForm()
         {
-            txtUserID.Text = string.Empty;
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
-            dtpLastLogin.Text = string.Empty;
+            cboRole.SelectedIndex = -1;
         }
 
-        /// <summary>
-        /// This method checks if the inputs are empty or not
-        /// </summary>
-        /// <returns>Returns true if all data is valid, otherwise returns false</returns>
         private Boolean IsValidAllData()
         {
-            if (txtUsername.Text == string.Empty)
+            if (string.IsNullOrEmpty(txtUsername.Text))
             {
                 txtUsername.Focus();
                 MessageBox.Show("Input a unique username", "Error");
                 return false;
             }
-            if (txtPassword.Text == string.Empty)
+
+            if (string.IsNullOrEmpty(txtPassword.Text))
             {
                 txtPassword.Focus();
                 MessageBox.Show("Input a password", "Error");
                 return false;
             }
-            if (cboRole.SelectedIndex == 0)
+
+            if (cboRole.SelectedIndex == -1)
             {
                 cboRole.Focus();
                 MessageBox.Show("Select a role for the user", "Error");
                 return false;
             }
-            return true;
-        }
 
-        /// <summary>
-        /// This method to update information to the database
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ResetForm();
+            return true;
         }
 
         private void lstUser_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,7 +141,7 @@ namespace SupplyTracker.Views
                 ListViewItem selectedItem = lstUser.SelectedItems[0];
 
                 // Retrieve the user object from the Tag property
-                var user = selectedItem.Tag as UserDTO;
+                var user = selectedItem.Tag as User;
 
                 if (user != null)
                 {
@@ -151,14 +149,12 @@ namespace SupplyTracker.Views
                     txtUsername.Text = user.Username;
                     txtPassword.Text = user.Password;
                     cboRole.Text = user.Role;
-                    dtpLastLogin.Text = user.LastDateLogin.ToString();
                 }
             }
             else
             {
                 btnAdd.Text = "Add";
                 ResetForm();
-
             }
         }
 
@@ -166,11 +162,12 @@ namespace SupplyTracker.Views
         {
             if (lstUser.SelectedItems.Count > 0)
             {
-                User user = new User()
+                var user = (User)lstUser.SelectedItems[0].Tag;
+
+                if (user != null)
                 {
-                    UserID = ((UserDTO)lstUser.SelectedItems[0].Tag).UserID
-                };
-                UserDB.DeleteUser(user);
+                    UserDB.DeleteUser(user);
+                }
                 LoadUserList();
                 ResetForm();
             }
@@ -183,6 +180,11 @@ namespace SupplyTracker.Views
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ResetForm();
         }
     }
 }
