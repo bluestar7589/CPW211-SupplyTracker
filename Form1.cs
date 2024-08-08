@@ -1,9 +1,13 @@
 using SupplyTracker.Views;
+using SupplyTracker.Models;
 
 namespace SupplyTracker
 {
     public partial class Form1 : Form
     {
+        public static User LoggedInUser { get; set; } // Static property to hold the logged-in user
+
+
         public Form1()
         {
             InitializeComponent();
@@ -49,5 +53,6 @@ namespace SupplyTracker
             UserForm userForm = new UserForm();
             userForm.ShowDialog();
         }
+
     }
 }

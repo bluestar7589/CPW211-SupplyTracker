@@ -12,46 +12,15 @@ namespace SupplyTracker.Databases
 {
     internal class UserDB
     {
-
-        /// <summary>
-        /// Create the UserDTO class to store the user information
-        /// </summary>
-        public class UserDTO
-        {
-            [DisplayName("User ID")]
-            public int UserID { get; set; }
-
-            [DisplayName("Username")]
-            public string? Username { get; set; }
-
-            [DisplayName("Password")]
-            public string? Password { get; set; }
-
-            [DisplayName("Role")]
-            public string? Role { get; set; }
-
-            [DisplayName("Last Login")]
-            public DateTime? LastDateLogin { get; set; }
-        }
-
         /// <summary>
         /// This method grabs all users in the database
         /// </summary>
         /// <returns>Returns a list of all users in the database</returns>
-        public static List<UserDTO> GetAllUsers()
+        public static List<User> GetAllUsers()
         {
             using (SupplyTrackerContext context = new())
             {
-                var lstUser = from user in context.Users
-                              select new UserDTO
-                              {
-                                  UserID = user.UserID,
-                                  Username = user.Username,
-                                  Password = user.Password,
-                                  Role = user.Role,
-                                  LastDateLogin = user.LastDateLogin
-                              };
-                return lstUser.ToList();
+                return context.Users.ToList();
             }
         }
         /// <summary>
@@ -75,8 +44,17 @@ namespace SupplyTracker.Databases
         {
             using (SupplyTrackerContext context = new())
             {
-                context.Users.Update(user);
-                context.SaveChanges();
+                var existingUser = context.Users.Find(user.UserID);
+                if (existingUser != null)
+                {
+                    existingUser.Username = user.Username;
+                    existingUser.Password = user.Password;
+                    existingUser.Role = user.Role;
+                    existingUser.LastDateLogin = user.LastDateLogin;
+
+                    context.SaveChanges();
+                }
+
             }
         }
 
@@ -86,34 +64,38 @@ namespace SupplyTracker.Databases
         /// <param name="user"></param>
         public static void DeleteUser(User user)
         {
-            using (SupplyTrackerContext context = new SupplyTrackerContext())
+            using (SupplyTrackerContext context = new())
             {
-                context.Users.Remove(user);
-                context.SaveChanges();
+                var existingUser = context.Users.Find(user.UserID);
+                if (existingUser != null)
+                {
+                    context.Users.Remove(existingUser);
+                    context.SaveChanges();
+                }
             }
         }
 
         /// <summary>
         /// Once the Login button is pressed, this actuates 
         /// </summary>
-        public bool VerifyLogin(string username, string password)
+        public static User ?VerifyLogin(string username, string password)
         {
             using (var context = new SupplyTrackerContext())
             {
                 // Search for the user with the username input
-                var user = context.Users.SingleOrDefault(u => u.Username == username);
+                var user = context.Users.SingleOrDefault(u => u.Username == username && u.Password == password);
 
-                // If the username is found and the password matches proceed
-                if (user != null && user.Password == password)
+                // Check if the user is found
+                if (user != null)
                 {
                     user.LastDateLogin = DateTime.Now;
                     context.SaveChanges();
-                    return true;
+                    return user;
                 }
                 // If not, return false
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
 
