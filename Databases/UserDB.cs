@@ -1,5 +1,6 @@
 ﻿using SupplyTracker.Data;
 using SupplyTracker.Models;
+using SupplyTracker.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,6 +81,7 @@ namespace SupplyTracker.Databases
         /// </summary>
         public static User ?VerifyLogin(string username, string password)
         {
+            password = PasswordHasher.HashPassword(password);
             using (var context = new SupplyTrackerContext())
             {
                 // Search for the user with the username input
