@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using SupplyTracker.Databases;
 using SupplyTracker.Models;
+using SupplyTracker.Util;
 
 namespace SupplyTracker.Views
 {
@@ -61,7 +62,7 @@ namespace SupplyTracker.Views
                 var listViewItem = new ListViewItem(user.UserID.ToString());
 
                 listViewItem.SubItems.Add(user.Username);
-                listViewItem.SubItems.Add(user.Password);
+                listViewItem.SubItems.Add("*****"); // Placeholder for password
                 listViewItem.SubItems.Add(user.Role);
                 listViewItem.SubItems.Add(user.LastDateLogin?.ToString("MM/dd/yyyy"));
                 listViewItem.Tag = user;
@@ -76,11 +77,13 @@ namespace SupplyTracker.Views
         {
             if (IsValidAllData())
             {
+                string hashedPassword = PasswordHasher.HashPassword(txtPassword.Text);
+
                 User user = new User()
                 {
                     UserID = lstUser.SelectedItems.Count > 0 ? ((User)lstUser.SelectedItems[0].Tag).UserID : 0,
                     Username = txtUsername.Text,
-                    Password = txtPassword.Text,
+                    Password = hashedPassword,
                     Role = cboRole.Text,
                     LastDateLogin = DateTime.Now
                 };
@@ -147,7 +150,7 @@ namespace SupplyTracker.Views
                 {
                     txtUserID.Text = user.UserID.ToString();
                     txtUsername.Text = user.Username;
-                    txtPassword.Text = user.Password;
+                    txtPassword.Text = "*****";
                     cboRole.Text = user.Role;
                 }
             }
