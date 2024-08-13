@@ -68,6 +68,7 @@
             supplyManagementToolStripMenuItem.Name = "supplyManagementToolStripMenuItem";
             supplyManagementToolStripMenuItem.Size = new Size(190, 22);
             supplyManagementToolStripMenuItem.Text = "Supply Management";
+            supplyManagementToolStripMenuItem.Click += supplyManagementToolStripMenuItem_Click;
             // 
             // vendorsToolStripMenuItem
             // 
@@ -97,7 +98,7 @@
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(180, 22);
+            userManagementToolStripMenuItem.Size = new Size(171, 22);
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 

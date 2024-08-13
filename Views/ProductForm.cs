@@ -168,7 +168,7 @@ namespace SupplyTracker.Views
         {
             if (IsValidAllData())
             {
-                
+
                 Product product = new Product
                 {
                     ProductId = lstProduct.SelectedItems.Count > 0 ? ((ProductDTO)lstProduct.SelectedItems[0].Tag).ProductID : 0,
@@ -188,20 +188,21 @@ namespace SupplyTracker.Views
                         ProductDB.AddProduct(product);
                         MessageBox.Show("Added successfully !!!", "Success");
                     }
-                    catch (Exception exc) {
+                    catch (Exception exc)
+                    {
                         MessageBox.Show(exc.Message.ToString(), "Error");
                     }
 
 
                 }
-                else 
+                else
                 {
                     try
                     {
                         ProductDB.UpdateProduct(product);
-                        MessageBox.Show("Deleted successfully !!!", "Success");
+                        MessageBox.Show("Updated successfully !!!", "Success");
                     }
-                    catch (Exception exc) 
+                    catch (Exception exc)
                     {
                         MessageBox.Show(exc.Message.ToString(), "Error");
                     }
@@ -279,6 +280,7 @@ namespace SupplyTracker.Views
                     ProductDB.DeleteProduct(product);
                     LoadProductList();
                     ResetForm();
+                    MessageBox.Show("Deleted successfully !!!", "Success");
                 }
                 catch (Exception exc)
                 {
@@ -287,7 +289,7 @@ namespace SupplyTracker.Views
             }
             else
             {
-                MessageBox.Show("Select the item that you want to delete.","Error");
+                MessageBox.Show("Select the item that you want to delete.", "Error");
             }
         }
 
