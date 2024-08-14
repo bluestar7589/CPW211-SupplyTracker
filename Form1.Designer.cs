@@ -69,6 +69,7 @@
             supplyManagementToolStripMenuItem.Name = "supplyManagementToolStripMenuItem";
             supplyManagementToolStripMenuItem.Size = new Size(190, 22);
             supplyManagementToolStripMenuItem.Text = "Supply Management";
+            supplyManagementToolStripMenuItem.Click += supplyManagementToolStripMenuItem_Click;
             // 
             // vendorsToolStripMenuItem
             // 
