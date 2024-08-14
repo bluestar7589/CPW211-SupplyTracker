@@ -37,6 +37,7 @@
             departmentsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
+            btnLoginLogout = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -97,15 +98,26 @@
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(180, 22);
+            userManagementToolStripMenuItem.Size = new Size(171, 22);
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
+            // 
+            // btnLoginLogout
+            // 
+            btnLoginLogout.Location = new Point(713, 27);
+            btnLoginLogout.Name = "btnLoginLogout";
+            btnLoginLogout.Size = new Size(75, 23);
+            btnLoginLogout.TabIndex = 2;
+            btnLoginLogout.Text = "Logout";
+            btnLoginLogout.UseVisualStyleBackColor = true;
+            btnLoginLogout.Click += btnLoginLogout_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLoginLogout);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
@@ -129,5 +141,6 @@
         private ToolStripMenuItem userManagementToolStripMenuItem;
         private ToolStripMenuItem productManagementToolStripMenuItem;
         private ToolStripMenuItem supplyManagementToolStripMenuItem;
+        private Button btnLoginLogout;
     }
 }

@@ -5,7 +5,7 @@ namespace SupplyTracker
 {
     public partial class Form1 : Form
     {
-        public static User LoggedInUser { get; set; } // Static property to hold the logged-in user
+        public static User? LoggedInUser { get; set; } // Static property to hold the logged-in user
 
 
         public Form1()
@@ -18,10 +18,11 @@ namespace SupplyTracker
             LoginForm loginForm = new LoginForm();
             this.Enabled = false;
             // Keep showing the login form until success or cancel (exit) the program.
-            while (true)
+            while (LoggedInUser == null)
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
+                    btnLoginLogout.Text = "Logout";
                     this.Enabled = true;
                     break;
                 }
@@ -49,6 +50,22 @@ namespace SupplyTracker
             UserForm userForm = new UserForm();
             userForm.ShowDialog();
         }
+
+        private void btnLoginLogout_Click(object sender, EventArgs e)
+        {
+            if (btnLoginLogout.Text == "Logout") 
+            {
+                LoggedInUser = null;
+                btnLoginLogout.Text = "Login";
+            }
+            else 
+            {
+                // Restart the application
+                Application.Restart();
+                Environment.Exit(0); // Ensure the current instance exits
+            }
+        }
+
 
     }
 }
