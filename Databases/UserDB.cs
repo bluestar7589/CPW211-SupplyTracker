@@ -2,12 +2,14 @@
 using SupplyTracker.Models;
 using SupplyTracker.Util;
 using System;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Buffers.Text;
 
 namespace SupplyTracker.Databases
 {
@@ -32,6 +34,12 @@ namespace SupplyTracker.Databases
         {
             using (SupplyTrackerContext context = new())
             {
+                string salt = PasswordHasher.GenerateSalt();
+                user.Salt = salt;
+
+                // Hash the password for the first time and save it
+                user.Password = PasswordHasher.HashPassword(user.Password, user.Salt);
+
                 context.Users.Add(user);
                 context.SaveChanges();
             }
@@ -49,7 +57,7 @@ namespace SupplyTracker.Databases
                 if (existingUser != null)
                 {
                     existingUser.Username = user.Username;
-                    existingUser.Password = user.Password;
+                    existingUser.Password = PasswordHasher.HashPassword(user.Password, existingUser.Salt);
                     existingUser.Role = user.Role;
                     existingUser.LastDateLogin = user.LastDateLogin;
 
@@ -76,32 +84,49 @@ namespace SupplyTracker.Databases
             }
         }
 
+
         /// <summary>
         /// Once the Login button is pressed, this actuates 
         /// </summary>
-        public static User ?VerifyLogin(string username, string password)
+        public User ?VerifyLogin(string username, string password)
         {
-            password = PasswordHasher.HashPassword(password);
             using (var context = new SupplyTrackerContext())
             {
                 // Search for the user with the username input
-                var user = context.Users.SingleOrDefault(u => u.Username == username && u.Password == password);
+                var user = context.Users.SingleOrDefault(u => u.Username == username);
 
                 // Check if the user is found
-                if (user != null)
+                if (user == null)
+                {
+                    return null;
+                }
+
+                // Check if the user's salt is null
+                if (user.Salt == null)
+                {
+                    // If salt is null, we must generate one for the user
+                    // before hashing the password
+                    user.Salt = PasswordHasher.GenerateSalt();
+                }
+
+                var hashedPassword = PasswordHasher.HashPassword(password, user.Salt);
+
+                // Compare the hashed password with the stored hash
+                if (hashedPassword == user.Password)
                 {
                     user.LastDateLogin = DateTime.Now;
                     context.SaveChanges();
-                    return user;
+                    return user; // Password is correct
                 }
-                // If not, return false
                 else
                 {
-                    return null;
+                    return null; // Password is incorrect
                 }
             }
 
         }
+
+        
 
 
     }
