@@ -21,6 +21,11 @@ public partial class User
     /// </summary>
     public string? Password { get; set; }
 
+    /// <summary>
+    /// Salt used to has the password, unique per user
+    /// </summary>
+    public string? Salt { get; set; }
+
     /// <summary>s
     /// The role of the account login to system
     /// </summary>

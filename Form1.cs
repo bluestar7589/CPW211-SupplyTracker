@@ -29,10 +29,6 @@ namespace SupplyTracker
                 {
                     Application.Exit();// Exit the program
                 }
-                else
-                {
-                    MessageBox.Show("Username or password is not correct!!! Please try again !!!", "Error");
-                }
             }
         }
 

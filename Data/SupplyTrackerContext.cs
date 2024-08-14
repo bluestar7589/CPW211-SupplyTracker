@@ -199,6 +199,7 @@ public partial class SupplyTrackerContext : DbContext
             entity.Property(e => e.UserID).HasColumnName("UserID");
             entity.Property(e => e.LastDateLogin).HasColumnType("datetime");
             entity.Property(e => e.Password).HasMaxLength(255);
+            entity.Property(e => e.Salt).HasMaxLength(255);
             entity.Property(e => e.Role).HasMaxLength(50);
             entity.Property(e => e.Username).HasMaxLength(50);
         });

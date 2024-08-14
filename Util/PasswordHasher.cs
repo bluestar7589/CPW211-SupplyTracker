@@ -1,30 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Cryptography;
 
 namespace SupplyTracker.Util
 {
-    public static class PasswordHasher
+    public class PasswordHasher
     {
-        public static string HashPassword(string password)
+        /// <summary>
+        /// Encrypts users password and stores the User's salt
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="salt"></param>
+        /// <returns></returns>
+        public static string HashPassword(string password, string salt)
         {
-            // Create a SHA256 instance
-            using (SHA256 sha256Hash = SHA256.Create())
+            using (var sha256 = SHA256.Create())
             {
-                // Compute the hash
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                // Convert the byte array to a string
-                StringBuilder builder = new StringBuilder();
-                foreach (byte b in bytes)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
+                var saltedPassword = password + salt;
+                byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(saltedPassword);
+                byte[] hashBytes = sha256.ComputeHash(saltedPasswordBytes);
+                return Convert.ToBase64String(hashBytes);
             }
+        }
+
+        /// <summary>
+        /// Generates a User's salt
+        /// </summary>
+        /// <returns>Returns the generated salt string</returns>
+        public static string GenerateSalt()
+        {
+            int size = 32;
+            // Create a byte array to hold the salt
+            byte[] saltBytes = new byte[size];
+
+            // Fill the array with secure random bytes
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(saltBytes);
+            }
+
+            // Convert the byte array to a Base64 string for storage
+            return Convert.ToBase64String(saltBytes);
         }
     }
 }

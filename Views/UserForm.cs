@@ -77,16 +77,16 @@ namespace SupplyTracker.Views
         {
             if (IsValidAllData())
             {
-                string hashedPassword = PasswordHasher.HashPassword(txtPassword.Text);
-
                 User user = new User()
                 {
+                    // Salt is left out as it is generated in UserDB only when creating a user
                     UserID = lstUser.SelectedItems.Count > 0 ? ((User)lstUser.SelectedItems[0].Tag).UserID : 0,
                     Username = txtUsername.Text,
-                    Password = hashedPassword,
+                    Password = txtPassword.Text, 
                     Role = cboRole.Text,
                     LastDateLogin = DateTime.Now
                 };
+
                 if (btnAdd.Text.Equals("Add"))
                 {
                     UserDB.AddUser(user);
