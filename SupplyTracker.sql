@@ -70,6 +70,7 @@ CREATE TABLE [Users] (
     UserID INT PRIMARY KEY IDENTITY(1,1),
     Username NVARCHAR(50) UNIQUE,
     Password NVARCHAR(255),
+	Salt NVARCHAR(255),
     Role NVARCHAR(50),
     LastDateLogin DATETIME
 );
@@ -179,10 +180,10 @@ VALUES
 GO
 
 -- Insert sample data into User table
-INSERT INTO [Users] (Username, Password, Role, LastDateLogin)
+INSERT INTO [Users] (Username, Password,Salt , Role, LastDateLogin)
 VALUES 
-('johndoe', 'password123', 'Admin', '2024-06-10'),
-('janesmith', 'password456', 'User', '2024-06-11');
+('admin', 'Yg9fxNr0YF1dxuUTvepz4Wzp0jzxD52N50mAZgJzLd8=', '1lFxbWRPMA1TcD4UAN+YA4wuy6brVjhZGjT08xlwqvo=', 'Admin', '2024-06-10'),
+('joe', 'sfiVb6viHKD+6ZBBwoHiGspVmtC7wZuV57T8ekL1+G4=', 't7B89XFwRa/yXiMFrJJnGMKx3f11rhuexu1LNahvhes=', 'User', '2024-06-11');
 GO
 
 -- Insert sample data into ProductCategory table
