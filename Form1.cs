@@ -7,11 +7,11 @@ namespace SupplyTracker
     {
         public static User? LoggedInUser { get; set; } // Static property to hold the logged-in user
 
-
         public Form1()
         {
             InitializeComponent();
             this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,6 +43,7 @@ namespace SupplyTracker
         {
             // Open the product form using generic T structure
             openChildForm<ProductForm>();
+
         }
 
         /// <summary>
@@ -59,12 +60,12 @@ namespace SupplyTracker
 
         private void btnLoginLogout_Click(object sender, EventArgs e)
         {
-            if (btnLoginLogout.Text == "Logout") 
+            if (btnLoginLogout.Text == "Logout")
             {
                 LoggedInUser = null;
                 btnLoginLogout.Text = "Login";
             }
-            else 
+            else
             {
                 // Restart the application
                 Application.Restart();
@@ -76,6 +77,12 @@ namespace SupplyTracker
         private void supplyManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm<SupplyForm>();
+        }
+
+        private void tabControlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TabControlTest tabControl = new TabControlTest();
+            tabControl.Show();
         }
 
         /// <summary>
@@ -99,6 +106,5 @@ namespace SupplyTracker
             childForm.MdiParent = this;
             childForm.Show();
         }
-
     }
 }

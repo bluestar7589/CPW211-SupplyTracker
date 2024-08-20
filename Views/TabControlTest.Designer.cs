@@ -1,14 +1,14 @@
-﻿namespace SupplyTracker
+﻿namespace SupplyTracker.Views
 {
-    partial class Form1
+    partial class TabControlTest
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,8 +23,8 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -37,8 +37,7 @@
             departmentsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
-            btnLoginLogout = new Button();
-            tabControlToolStripMenuItem = new ToolStripMenuItem();
+            tabControl = new TabControl();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,12 +47,12 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
-            menuStrip1.TabIndex = 0;
+            menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // productsToolStripMenuItem
             // 
-            productsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productManagementToolStripMenuItem, supplyManagementToolStripMenuItem, tabControlToolStripMenuItem });
+            productsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productManagementToolStripMenuItem, supplyManagementToolStripMenuItem });
             productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             productsToolStripMenuItem.Size = new Size(66, 20);
             productsToolStripMenuItem.Text = "Products";
@@ -70,7 +69,6 @@
             supplyManagementToolStripMenuItem.Name = "supplyManagementToolStripMenuItem";
             supplyManagementToolStripMenuItem.Size = new Size(190, 22);
             supplyManagementToolStripMenuItem.Text = "Supply Management";
-            supplyManagementToolStripMenuItem.Click += supplyManagementToolStripMenuItem_Click;
             // 
             // vendorsToolStripMenuItem
             // 
@@ -104,35 +102,24 @@
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 
-            // btnLoginLogout
+            // tabControl
             // 
-            btnLoginLogout.Location = new Point(713, 27);
-            btnLoginLogout.Name = "btnLoginLogout";
-            btnLoginLogout.Size = new Size(75, 23);
-            btnLoginLogout.TabIndex = 2;
-            btnLoginLogout.Text = "Logout";
-            btnLoginLogout.UseVisualStyleBackColor = true;
-            btnLoginLogout.Click += btnLoginLogout_Click;
+            tabControl.Location = new Point(0, 27);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(800, 420);
+            tabControl.TabIndex = 3;
             // 
-            // tabControlToolStripMenuItem
-            // 
-            tabControlToolStripMenuItem.Name = "tabControlToolStripMenuItem";
-            tabControlToolStripMenuItem.Size = new Size(190, 22);
-            tabControlToolStripMenuItem.Text = "Tab Control";
-            tabControlToolStripMenuItem.Click += tabControlToolStripMenuItem_Click;
-            // 
-            // Form1
+            // TabControlTest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnLoginLogout);
+            Controls.Add(tabControl);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
-            MainMenuStrip = menuStrip1;
-            Name = "Form1";
-            Text = "Dashboard";
-            Load += Form1_Load;
+            Name = "TabControlTest";
+            Text = "TabControl";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -143,14 +130,13 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem productsToolStripMenuItem;
+        private ToolStripMenuItem productManagementToolStripMenuItem;
+        private ToolStripMenuItem supplyManagementToolStripMenuItem;
         private ToolStripMenuItem vendorsToolStripMenuItem;
         private ToolStripMenuItem ordersToolStripMenuItem;
         private ToolStripMenuItem departmentsToolStripMenuItem;
         private ToolStripMenuItem usersToolStripMenuItem;
         private ToolStripMenuItem userManagementToolStripMenuItem;
-        private ToolStripMenuItem productManagementToolStripMenuItem;
-        private ToolStripMenuItem supplyManagementToolStripMenuItem;
-        private Button btnLoginLogout;
-        private ToolStripMenuItem tabControlToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl;
     }
 }
