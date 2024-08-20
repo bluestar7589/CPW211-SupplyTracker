@@ -18,6 +18,7 @@ namespace SupplyTracker.Views
 {
     public partial class ProductForm : Form
     {
+        private TabControl _tabControl;
         public ProductForm()
         {
             InitializeComponent();
@@ -27,6 +28,14 @@ namespace SupplyTracker.Views
             SetupListView();
         }
 
+        /// <summary>
+        /// Using this contructor for tabcontrol to get information from the tabcontrol
+        /// </summary>
+        /// <param name="tabControl"></param>
+        public ProductForm(TabControl tabControl)
+        {
+            _tabControl = tabControl;
+        }
 
         /// <summary>
         /// Setup the list view to show the product information
@@ -300,7 +309,9 @@ namespace SupplyTracker.Views
         /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
+            int tabIndex = _tabControl.TabIndex;
             this.Close();
+            
         }
 
         /// <summary>
