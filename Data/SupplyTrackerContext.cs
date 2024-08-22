@@ -52,9 +52,9 @@ public partial class SupplyTrackerContext : DbContext
     {
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B8AEBB0A92");
+            entity.HasKey(e => e.CustomerID).HasName("PK__Customer__A4AE64B8AEBB0A92");
 
-            entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+            entity.Property(e => e.CustomerID).HasColumnName("CustomerID");
             entity.Property(e => e.FirstName).HasMaxLength(50);
             entity.Property(e => e.LastName).HasMaxLength(50);
             entity.Property(e => e.PhoneNumber).HasMaxLength(15);
