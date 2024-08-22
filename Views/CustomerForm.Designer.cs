@@ -154,6 +154,7 @@
             lstCustomer.TabIndex = 46;
             lstCustomer.UseCompatibleStateImageBehavior = false;
             lstCustomer.View = View.Details;
+            lstCustomer.SelectedIndexChanged += lstCustomer_SelectedIndexChanged;
             // 
             // cboPosition
             // 

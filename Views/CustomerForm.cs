@@ -93,13 +93,16 @@ namespace SupplyTracker.Views
                     continue;
                 }
 
-                var listViewItem = new ListViewItem(customer.CustomerID.ToString());
+                var listViewItem = new ListViewItem(customer.CustomerId.ToString());
 
                 listViewItem.SubItems.Add(customer.FirstName);
                 listViewItem.SubItems.Add(customer.LastName);
                 listViewItem.SubItems.Add(customer.DepartmentCode.ToString());
                 listViewItem.SubItems.Add(customer.PhoneNumber);
                 listViewItem.SubItems.Add(customer.Position);
+
+                // Tag the customer as a Customer
+
                 listViewItem.Tag = customer;
 
                 lstCustomer.Items.Add(listViewItem);
@@ -163,6 +166,32 @@ namespace SupplyTracker.Views
             }
 
             return true;
+        }
+
+        private void lstCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstCustomer.SelectedItems.Count > 0)
+            {
+                btnAdd.Text = "Update";
+                // Get the selected customer
+                ListViewItem selectedCustomer = lstCustomer.SelectedItems[0];
+
+                var customer = selectedCustomer.Tag as Customer;
+
+                if (customer != null)
+                {
+                    txtFirstName.Text = customer.FirstName;
+                    txtLastName.Text = customer.LastName;
+                    txtPhoneNumber.Text = customer.PhoneNumber;
+                    txtDepartmentCode.Text = customer.DepartmentCode.ToString();
+                    cboPosition.Text = customer.Position;
+                }
+            }
+            else
+            {
+                btnAdd.Text = "Add";
+                ResetForm();
+            }
         }
     }
 }
