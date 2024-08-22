@@ -32,19 +32,21 @@
             productsToolStripMenuItem = new ToolStripMenuItem();
             productManagementToolStripMenuItem = new ToolStripMenuItem();
             supplyManagementToolStripMenuItem = new ToolStripMenuItem();
+            tabControlToolStripMenuItem = new ToolStripMenuItem();
             vendorsToolStripMenuItem = new ToolStripMenuItem();
             ordersToolStripMenuItem = new ToolStripMenuItem();
             departmentsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
+            customersToolStripMenuItem = new ToolStripMenuItem();
             btnLoginLogout = new Button();
-            tabControlToolStripMenuItem = new ToolStripMenuItem();
+            customerManagementToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { productsToolStripMenuItem, vendorsToolStripMenuItem, ordersToolStripMenuItem, departmentsToolStripMenuItem, usersToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { productsToolStripMenuItem, vendorsToolStripMenuItem, ordersToolStripMenuItem, departmentsToolStripMenuItem, usersToolStripMenuItem, customersToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -71,6 +73,13 @@
             supplyManagementToolStripMenuItem.Size = new Size(190, 22);
             supplyManagementToolStripMenuItem.Text = "Supply Management";
             supplyManagementToolStripMenuItem.Click += supplyManagementToolStripMenuItem_Click;
+            // 
+            // tabControlToolStripMenuItem
+            // 
+            tabControlToolStripMenuItem.Name = "tabControlToolStripMenuItem";
+            tabControlToolStripMenuItem.Size = new Size(190, 22);
+            tabControlToolStripMenuItem.Text = "Tab Control";
+            tabControlToolStripMenuItem.Click += tabControlToolStripMenuItem_Click;
             // 
             // vendorsToolStripMenuItem
             // 
@@ -100,9 +109,16 @@
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(171, 22);
+            userManagementToolStripMenuItem.Size = new Size(180, 22);
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
+            // 
+            // customersToolStripMenuItem
+            // 
+            customersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { customerManagementToolStripMenuItem });
+            customersToolStripMenuItem.Name = "customersToolStripMenuItem";
+            customersToolStripMenuItem.Size = new Size(71, 20);
+            customersToolStripMenuItem.Text = "Customer";
             // 
             // btnLoginLogout
             // 
@@ -114,12 +130,12 @@
             btnLoginLogout.UseVisualStyleBackColor = true;
             btnLoginLogout.Click += btnLoginLogout_Click;
             // 
-            // tabControlToolStripMenuItem
+            // customerManagementToolStripMenuItem
             // 
-            tabControlToolStripMenuItem.Name = "tabControlToolStripMenuItem";
-            tabControlToolStripMenuItem.Size = new Size(190, 22);
-            tabControlToolStripMenuItem.Text = "Tab Control";
-            tabControlToolStripMenuItem.Click += tabControlToolStripMenuItem_Click;
+            customerManagementToolStripMenuItem.Name = "customerManagementToolStripMenuItem";
+            customerManagementToolStripMenuItem.Size = new Size(200, 22);
+            customerManagementToolStripMenuItem.Text = "Customer Management";
+            customerManagementToolStripMenuItem.Click += customerManagementToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -152,5 +168,7 @@
         private ToolStripMenuItem supplyManagementToolStripMenuItem;
         private Button btnLoginLogout;
         private ToolStripMenuItem tabControlToolStripMenuItem;
+        private ToolStripMenuItem customersToolStripMenuItem;
+        private ToolStripMenuItem customerManagementToolStripMenuItem;
     }
 }
