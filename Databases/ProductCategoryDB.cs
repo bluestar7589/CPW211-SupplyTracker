@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SupplyTracker.Databases
 {
-    internal class ProductCategoryDB
+    public class ProductCategoryDB
     {
         /// <summary>
         /// This method to get all the category from product category
