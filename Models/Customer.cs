@@ -8,7 +8,7 @@ public partial class Customer
     /// <summary>
     /// The unique identifier for the customer.
     /// </summary>
-    public int CustomerId { get; set; }
+    public int CustomerID { get; set; }
 
     /// <summary>
     /// The first name of the customer.
