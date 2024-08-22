@@ -89,13 +89,12 @@ namespace SupplyTracker
         {
             openChildForm<CustomerForm>();
         }
-    }
 
-    /// <summary>
-    /// This method to open the child form, as well as check if it is already open, it will not open another form
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    private void openChildForm<NewForm>() where NewForm : Form, new()
+        /// <summary>
+        /// This method to open the child form, as well as check if it is already open, it will not open another form
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        private void openChildForm<NewForm>() where NewForm : Form, new()
         {
             // Check if the form is already open
             foreach (Form form in this.MdiChildren)
@@ -114,3 +113,4 @@ namespace SupplyTracker
         }
     }
 }
+
