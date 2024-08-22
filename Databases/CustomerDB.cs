@@ -45,6 +45,7 @@ namespace SupplyTracker.Databases
         {
             using (SupplyTrackerContext context = new())
             {
+
                 var existingCustomer = context.Customers.Find(customer.CustomerId);
                 if (existingCustomer != null)
                 {
@@ -68,7 +69,9 @@ namespace SupplyTracker.Databases
         {
             using (SupplyTrackerContext context = new())
             {
+
                 var existingCustomer = context.Customers.Find(customer.CustomerId);
+
                 if (existingCustomer != null)
                 {
                     context.Customers.Remove(existingCustomer);

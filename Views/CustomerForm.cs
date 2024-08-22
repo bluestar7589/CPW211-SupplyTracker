@@ -100,7 +100,9 @@ namespace SupplyTracker.Views
                 listViewItem.SubItems.Add(customer.DepartmentCode.ToString());
                 listViewItem.SubItems.Add(customer.PhoneNumber);
                 listViewItem.SubItems.Add(customer.Position);
+
                 // Tag the customer as a Customer
+
                 listViewItem.Tag = customer;
 
                 lstCustomer.Items.Add(listViewItem);
