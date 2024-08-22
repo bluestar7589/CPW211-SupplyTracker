@@ -41,7 +41,18 @@ namespace SupplyTracker.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            if (IsValidAllData())
+            {
+                Customer customer = new Customer()
+                {
+                    // CustomerID is left out as it is generated automatically by the database
+                    FirstName = txtFirstName.Text,
+                    LastName = txtLastName.Text,
+                    DepartmentCode = int.Parse(txtDepartmentCode.Text),
+                    PhoneNumber = txtPhoneNumber.Text,
+                    Position = cboPosition.Text
+                };
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -59,7 +70,9 @@ namespace SupplyTracker.Views
             this.Close();
         }
 
-
+        /// <summary>
+        /// Finds and loads the list of current customers
+        /// </summary>
         public void LoadCustomerList()
         {
             lstCustomer.Items.Clear(); // Clear existing items in the list view
@@ -93,6 +106,63 @@ namespace SupplyTracker.Views
             }
 
             lstCustomer.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+        }
+
+        /// <summary>
+        /// A method to call when clearing the form's inputs
+        /// </summary>
+        private void ResetForm()
+        {
+            txtFirstName.Text = string.Empty;
+            txtLastName.Text = string.Empty;
+            txtDepartmentCode.Text = string.Empty;
+            txtPhoneNumber.Text = string.Empty;
+            cboPosition.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Validates all inputs have been correctly entered
+        /// </summary>
+        /// <returns>Returns true if all inputs are valid, otherwise false</returns>
+        private Boolean IsValidAllData()
+        {
+            if (string.IsNullOrEmpty(txtFirstName.Text))
+            {
+                txtFirstName.Focus();
+                MessageBox.Show("Input customer's first name", "Error");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtLastName.Text))
+            {
+                txtLastName.Focus();
+                MessageBox.Show("Input customer's last name", "Error");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtDepartmentCode.Text))
+            {
+                txtDepartmentCode.Focus();
+                MessageBox.Show("Input customer's department code", "Error");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtPhoneNumber.Text))
+            {
+                txtPhoneNumber.Focus();
+                MessageBox.Show("Input customer's phone number", "Error");
+                return false;
+            }
+
+
+            if (cboPosition.SelectedIndex == -1)
+            {
+                cboPosition.Focus();
+                MessageBox.Show("Select a positon for the customer", "Error");
+                return false;
+            }
+
+            return true;
         }
     }
 }

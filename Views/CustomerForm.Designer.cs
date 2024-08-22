@@ -158,6 +158,7 @@
             // cboPosition
             // 
             cboPosition.FormattingEnabled = true;
+            cboPosition.Items.AddRange(new object[] { "Doctor", "Nurse" });
             cboPosition.Location = new Point(171, 324);
             cboPosition.Name = "cboPosition";
             cboPosition.Size = new Size(109, 23);
