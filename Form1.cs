@@ -85,6 +85,11 @@ namespace SupplyTracker
             }
         }
 
+        private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm<CustomerForm>();
+        }
+
         /// <summary>
         /// This method to open the child form, as well as check if it is already open, it will not open another form
         /// </summary>
@@ -108,3 +113,4 @@ namespace SupplyTracker
         }
     }
 }
+
