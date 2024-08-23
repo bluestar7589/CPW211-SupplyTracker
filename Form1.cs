@@ -70,22 +70,24 @@ namespace SupplyTracker
             tabControl.Show();
         }
 
-        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm<CustomerForm>();
+        }
+
+        private void logOutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (logOutToolStripMenuItem.Text == "Logout")
             {
                 LoggedInUser = null;
                 logOutToolStripMenuItem.Text = "Login";
             }
-            else
-            {
-                // Restart the application
-                Application.Restart();
-                Environment.Exit(0); // Ensure the current instance exits
-            }
+            // Restart the application
+            Application.Restart();
+            Environment.Exit(0); // Ensure the current instance exits
         }
 
-        private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm<CustomerForm>();
         }

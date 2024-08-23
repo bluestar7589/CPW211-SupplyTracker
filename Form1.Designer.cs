@@ -38,14 +38,14 @@
             departmentsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
-            btnLoginLogout = new Button();
-            tabControlToolStripMenuItem = new ToolStripMenuItem();
+            logOutToolStripMenuItem = new ToolStripMenuItem();
+            customerToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { productsToolStripMenuItem, vendorsToolStripMenuItem, ordersToolStripMenuItem, departmentsToolStripMenuItem, usersToolStripMenuItem, customersToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { productsToolStripMenuItem, vendorsToolStripMenuItem, ordersToolStripMenuItem, departmentsToolStripMenuItem, usersToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -94,6 +94,7 @@
             // 
             // departmentsToolStripMenuItem
             // 
+            departmentsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { customerToolStripMenuItem });
             departmentsToolStripMenuItem.Name = "departmentsToolStripMenuItem";
             departmentsToolStripMenuItem.Size = new Size(87, 20);
             departmentsToolStripMenuItem.Text = "Departments";
@@ -112,22 +113,19 @@
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 
-            // btnLoginLogout
+            // logOutToolStripMenuItem
             // 
-            btnLoginLogout.Location = new Point(713, 27);
-            btnLoginLogout.Name = "btnLoginLogout";
-            btnLoginLogout.Size = new Size(75, 23);
-            btnLoginLogout.TabIndex = 2;
-            btnLoginLogout.Text = "Logout";
-            btnLoginLogout.UseVisualStyleBackColor = true;
-            btnLoginLogout.Click += btnLoginLogout_Click;
+            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            logOutToolStripMenuItem.Size = new Size(180, 22);
+            logOutToolStripMenuItem.Text = "Log Out";
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click_1;
             // 
-            // tabControlToolStripMenuItem
+            // customerToolStripMenuItem
             // 
-            tabControlToolStripMenuItem.Name = "tabControlToolStripMenuItem";
-            tabControlToolStripMenuItem.Size = new Size(190, 22);
-            tabControlToolStripMenuItem.Text = "Tab Control";
-            tabControlToolStripMenuItem.Click += tabControlToolStripMenuItem_Click;
+            customerToolStripMenuItem.Name = "customerToolStripMenuItem";
+            customerToolStripMenuItem.Size = new Size(180, 22);
+            customerToolStripMenuItem.Text = "Customer";
+            customerToolStripMenuItem.Click += customerToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -158,5 +156,7 @@
         private ToolStripMenuItem productManagementToolStripMenuItem;
         private ToolStripMenuItem supplyManagementToolStripMenuItem;
         private ToolStripMenuItem tabControlToolStripMenuItem;
+        private ToolStripMenuItem logOutToolStripMenuItem;
+        private ToolStripMenuItem customerToolStripMenuItem;
     }
 }

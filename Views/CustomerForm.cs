@@ -93,7 +93,7 @@ namespace SupplyTracker.Views
                     continue;
                 }
 
-                var listViewItem = new ListViewItem(customer.CustomerId.ToString());
+                var listViewItem = new ListViewItem(customer.CustomerID.ToString());
 
                 listViewItem.SubItems.Add(customer.FirstName);
                 listViewItem.SubItems.Add(customer.LastName);
