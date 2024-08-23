@@ -23,7 +23,7 @@ namespace SupplyTracker
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
-                    btnLoginLogout.Text = "Logout";
+                    logOutToolStripMenuItem.Text = "Logout";
                     this.Enabled = true;
                     break;
                 }
@@ -58,21 +58,6 @@ namespace SupplyTracker
         }
 
 
-        private void btnLoginLogout_Click(object sender, EventArgs e)
-        {
-            if (btnLoginLogout.Text == "Logout")
-            {
-                LoggedInUser = null;
-                btnLoginLogout.Text = "Login";
-            }
-            else
-            {
-                // Restart the application
-                Application.Restart();
-                Environment.Exit(0); // Ensure the current instance exits
-            }
-        }
-
 
         private void supplyManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -83,6 +68,21 @@ namespace SupplyTracker
         {
             TabControlTest tabControl = new TabControlTest();
             tabControl.Show();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (logOutToolStripMenuItem.Text == "Logout")
+            {
+                LoggedInUser = null;
+                logOutToolStripMenuItem.Text = "Login";
+            }
+            else
+            {
+                // Restart the application
+                Application.Restart();
+                Environment.Exit(0); // Ensure the current instance exits
+            }
         }
 
         /// <summary>

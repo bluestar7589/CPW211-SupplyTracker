@@ -32,13 +32,13 @@
             productsToolStripMenuItem = new ToolStripMenuItem();
             productManagementToolStripMenuItem = new ToolStripMenuItem();
             supplyManagementToolStripMenuItem = new ToolStripMenuItem();
+            tabControlToolStripMenuItem = new ToolStripMenuItem();
             vendorsToolStripMenuItem = new ToolStripMenuItem();
             ordersToolStripMenuItem = new ToolStripMenuItem();
             departmentsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
-            btnLoginLogout = new Button();
-            tabControlToolStripMenuItem = new ToolStripMenuItem();
+            logOutToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,6 +72,13 @@
             supplyManagementToolStripMenuItem.Text = "Supply Management";
             supplyManagementToolStripMenuItem.Click += supplyManagementToolStripMenuItem_Click;
             // 
+            // tabControlToolStripMenuItem
+            // 
+            tabControlToolStripMenuItem.Name = "tabControlToolStripMenuItem";
+            tabControlToolStripMenuItem.Size = new Size(190, 22);
+            tabControlToolStripMenuItem.Text = "Tab Control";
+            tabControlToolStripMenuItem.Click += tabControlToolStripMenuItem_Click;
+            // 
             // vendorsToolStripMenuItem
             // 
             vendorsToolStripMenuItem.Name = "vendorsToolStripMenuItem";
@@ -92,7 +99,7 @@
             // 
             // usersToolStripMenuItem
             // 
-            usersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem });
+            usersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, logOutToolStripMenuItem });
             usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             usersToolStripMenuItem.Size = new Size(47, 20);
             usersToolStripMenuItem.Text = "Users";
@@ -100,33 +107,22 @@
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(171, 22);
+            userManagementToolStripMenuItem.Size = new Size(180, 22);
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 
-            // btnLoginLogout
+            // logOutToolStripMenuItem
             // 
-            btnLoginLogout.Location = new Point(713, 27);
-            btnLoginLogout.Name = "btnLoginLogout";
-            btnLoginLogout.Size = new Size(75, 23);
-            btnLoginLogout.TabIndex = 2;
-            btnLoginLogout.Text = "Logout";
-            btnLoginLogout.UseVisualStyleBackColor = true;
-            btnLoginLogout.Click += btnLoginLogout_Click;
-            // 
-            // tabControlToolStripMenuItem
-            // 
-            tabControlToolStripMenuItem.Name = "tabControlToolStripMenuItem";
-            tabControlToolStripMenuItem.Size = new Size(190, 22);
-            tabControlToolStripMenuItem.Text = "Tab Control";
-            tabControlToolStripMenuItem.Click += tabControlToolStripMenuItem_Click;
+            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            logOutToolStripMenuItem.Size = new Size(180, 22);
+            logOutToolStripMenuItem.Text = "Log out";
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnLoginLogout);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
@@ -150,7 +146,7 @@
         private ToolStripMenuItem userManagementToolStripMenuItem;
         private ToolStripMenuItem productManagementToolStripMenuItem;
         private ToolStripMenuItem supplyManagementToolStripMenuItem;
-        private Button btnLoginLogout;
         private ToolStripMenuItem tabControlToolStripMenuItem;
+        private ToolStripMenuItem logOutToolStripMenuItem;
     }
 }
