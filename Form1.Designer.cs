@@ -39,8 +39,8 @@
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
             customersToolStripMenuItem = new ToolStripMenuItem();
-            btnLoginLogout = new Button();
             customerManagementToolStripMenuItem = new ToolStripMenuItem();
+            btnLoginLogout = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -109,7 +109,7 @@
             // userManagementToolStripMenuItem
             // 
             userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(180, 22);
+            userManagementToolStripMenuItem.Size = new Size(171, 22);
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 
@@ -120,22 +120,22 @@
             customersToolStripMenuItem.Size = new Size(71, 20);
             customersToolStripMenuItem.Text = "Customer";
             // 
-            // btnLoginLogout
-            // 
-            btnLoginLogout.Location = new Point(713, 27);
-            btnLoginLogout.Name = "btnLoginLogout";
-            btnLoginLogout.Size = new Size(75, 23);
-            btnLoginLogout.TabIndex = 2;
-            btnLoginLogout.Text = "Logout";
-            btnLoginLogout.UseVisualStyleBackColor = true;
-            btnLoginLogout.Click += btnLoginLogout_Click;
-            // 
             // customerManagementToolStripMenuItem
             // 
             customerManagementToolStripMenuItem.Name = "customerManagementToolStripMenuItem";
             customerManagementToolStripMenuItem.Size = new Size(200, 22);
             customerManagementToolStripMenuItem.Text = "Customer Management";
             customerManagementToolStripMenuItem.Click += customerManagementToolStripMenuItem_Click;
+            // 
+            // btnLoginLogout
+            // 
+            btnLoginLogout.Location = new Point(713, 27);
+            btnLoginLogout.Name = "btnLoginLogout";
+            btnLoginLogout.Size = new Size(75, 23);
+            btnLoginLogout.TabIndex = 2;
+            btnLoginLogout.Text = "Login";
+            btnLoginLogout.UseVisualStyleBackColor = true;
+            btnLoginLogout.Click += btnLoginLogout_Click;
             // 
             // Form1
             // 

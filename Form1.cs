@@ -16,6 +16,10 @@ namespace SupplyTracker
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            // Disable all controls except the Login/Logout button
+            SetControlsEnabled(false);
+            
             LoginForm loginForm = new LoginForm();
             this.Enabled = false;
             // Keep showing the login form until success or cancel (exit) the program.
@@ -24,6 +28,7 @@ namespace SupplyTracker
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
                     btnLoginLogout.Text = "Logout";
+                    SetControlsEnabled(true); // Enable all features after login
                     this.Enabled = true;
                     break;
                 }
@@ -31,6 +36,22 @@ namespace SupplyTracker
                 {
                     Application.Exit();// Exit the program
                 }
+            }
+        }
+        /// <summary>
+        /// Allow or disallow users to use the form
+        /// </summary>
+        /// <param name="enabled"></param>
+        private void SetControlsEnabled(bool enabled)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control != btnLoginLogout)
+                {
+                    control.Enabled = enabled;
+                }
+
+                btnLoginLogout.Enabled = true; // This needs to be hard coded true to keep the function working
             }
         }
 
@@ -64,6 +85,7 @@ namespace SupplyTracker
             {
                 LoggedInUser = null;
                 btnLoginLogout.Text = "Login";
+                SetControlsEnabled(false);
             }
             else
             {

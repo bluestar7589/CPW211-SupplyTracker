@@ -46,7 +46,7 @@ namespace SupplyTracker.Databases
             using (SupplyTrackerContext context = new())
             {
 
-                var existingCustomer = context.Customers.Find(customer.CustomerId);
+                var existingCustomer = context.Customers.Find(customer.CustomerID);
                 if (existingCustomer != null)
                 {
                     existingCustomer.FirstName = customer.FirstName;
@@ -70,7 +70,7 @@ namespace SupplyTracker.Databases
             using (SupplyTrackerContext context = new())
             {
 
-                var existingCustomer = context.Customers.Find(customer.CustomerId);
+                var existingCustomer = context.Customers.Find(customer.CustomerID);
 
                 if (existingCustomer != null)
                 {

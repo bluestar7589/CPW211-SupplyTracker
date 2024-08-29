@@ -20,7 +20,6 @@ namespace SupplyTracker.Views
         {
             InitializeComponent();
             _currentUser = Form1.LoggedInUser; // Get the logged-in user
-
         }
 
         private void CustomerForm_Load(object sender, EventArgs e)
@@ -93,7 +92,7 @@ namespace SupplyTracker.Views
                     continue;
                 }
 
-                var listViewItem = new ListViewItem(customer.CustomerId.ToString());
+                var listViewItem = new ListViewItem(customer.CustomerID.ToString());
 
                 listViewItem.SubItems.Add(customer.FirstName);
                 listViewItem.SubItems.Add(customer.LastName);
@@ -193,5 +192,6 @@ namespace SupplyTracker.Views
                 ResetForm();
             }
         }
+
     }
 }
