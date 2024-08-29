@@ -69,11 +69,14 @@ namespace SupplyTracker.Databases
         {
             using (SupplyTrackerContext context = new())
             {
-
                 var existingCustomer = context.Customers.Find(customer.CustomerID);
 
                 if (existingCustomer != null)
                 {
+                    // Remove related orders first
+                    var relatedOrders = context.Orders.Where(o => o.CustomerId == existingCustomer.CustomerID);
+                    context.Orders.RemoveRange(relatedOrders);
+
                     context.Customers.Remove(existingCustomer);
                     context.SaveChanges();
                 }

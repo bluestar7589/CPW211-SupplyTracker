@@ -111,6 +111,8 @@ namespace SupplyTracker.Databases
 
                 var hashedPassword = PasswordHasher.HashPassword(password, user.Salt);
 
+                user.Password = hashedPassword;
+
                 // Compare the hashed password with the stored hash
                 if (hashedPassword == user.Password)
                 {

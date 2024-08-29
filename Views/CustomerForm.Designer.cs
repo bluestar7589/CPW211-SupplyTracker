@@ -32,7 +32,6 @@
             btnClear = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
-            txtDepartmentCode = new TextBox();
             lblDepartmentCode = new Label();
             lblCaption = new Label();
             txtLastName = new TextBox();
@@ -44,6 +43,7 @@
             txtPhoneNumber = new TextBox();
             lblPhoneNumber = new Label();
             lblPosition = new Label();
+            cboDepartmentCode = new ComboBox();
             SuspendLayout();
             // 
             // btnExit
@@ -85,13 +85,6 @@
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
-            // 
-            // txtDepartmentCode
-            // 
-            txtDepartmentCode.Location = new Point(171, 224);
-            txtDepartmentCode.Name = "txtDepartmentCode";
-            txtDepartmentCode.Size = new Size(145, 23);
-            txtDepartmentCode.TabIndex = 34;
             // 
             // lblDepartmentCode
             // 
@@ -160,14 +153,14 @@
             // 
             cboPosition.FormattingEnabled = true;
             cboPosition.Items.AddRange(new object[] { "Doctor", "Nurse" });
-            cboPosition.Location = new Point(171, 324);
+            cboPosition.Location = new Point(171, 315);
             cboPosition.Name = "cboPosition";
             cboPosition.Size = new Size(109, 23);
             cboPosition.TabIndex = 47;
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.Location = new Point(171, 276);
+            txtPhoneNumber.Location = new Point(171, 267);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(145, 23);
             txtPhoneNumber.TabIndex = 48;
@@ -175,7 +168,7 @@
             // lblPhoneNumber
             // 
             lblPhoneNumber.AutoSize = true;
-            lblPhoneNumber.Location = new Point(37, 276);
+            lblPhoneNumber.Location = new Point(37, 267);
             lblPhoneNumber.Name = "lblPhoneNumber";
             lblPhoneNumber.Size = new Size(88, 15);
             lblPhoneNumber.TabIndex = 49;
@@ -184,17 +177,27 @@
             // lblPosition
             // 
             lblPosition.AutoSize = true;
-            lblPosition.Location = new Point(37, 324);
+            lblPosition.Location = new Point(37, 315);
             lblPosition.Name = "lblPosition";
             lblPosition.Size = new Size(50, 15);
             lblPosition.TabIndex = 50;
             lblPosition.Text = "Position";
+            // 
+            // cboDepartmentCode
+            // 
+            cboDepartmentCode.FormattingEnabled = true;
+            cboDepartmentCode.Items.AddRange(new object[] { "1" });
+            cboDepartmentCode.Location = new Point(171, 221);
+            cboDepartmentCode.Name = "cboDepartmentCode";
+            cboDepartmentCode.Size = new Size(121, 23);
+            cboDepartmentCode.TabIndex = 51;
             // 
             // CustomerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cboDepartmentCode);
             Controls.Add(lblPosition);
             Controls.Add(lblPhoneNumber);
             Controls.Add(txtPhoneNumber);
@@ -208,7 +211,6 @@
             Controls.Add(btnClear);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
-            Controls.Add(txtDepartmentCode);
             Controls.Add(lblDepartmentCode);
             Controls.Add(lblCaption);
             Name = "CustomerForm";
@@ -224,7 +226,6 @@
         private Button btnClear;
         private Button btnDelete;
         private Button btnAdd;
-        private TextBox txtDepartmentCode;
         private Label lblDepartmentCode;
         private Label lblCaption;
         private TextBox txtLastName;
@@ -236,5 +237,6 @@
         private TextBox txtPhoneNumber;
         private Label lblPhoneNumber;
         private Label lblPosition;
+        private ComboBox cboDepartmentCode;
     }
 }
