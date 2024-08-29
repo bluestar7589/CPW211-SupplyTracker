@@ -1,4 +1,4 @@
-﻿namespace SupplyTracker
+namespace SupplyTracker
 {
     partial class Form1
     {
@@ -36,17 +36,22 @@
             vendorsToolStripMenuItem = new ToolStripMenuItem();
             ordersToolStripMenuItem = new ToolStripMenuItem();
             departmentsToolStripMenuItem = new ToolStripMenuItem();
+            customerToolStripMenuItem = new ToolStripMenuItem(); // Fixed menu item for customer
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
-            customersToolStripMenuItem = new ToolStripMenuItem();
-            customerManagementToolStripMenuItem = new ToolStripMenuItem();
-            btnLoginLogout = new Button();
+            logOutToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { productsToolStripMenuItem, vendorsToolStripMenuItem, ordersToolStripMenuItem, departmentsToolStripMenuItem, usersToolStripMenuItem, customersToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] {
+                productsToolStripMenuItem,
+                vendorsToolStripMenuItem,
+                ordersToolStripMenuItem,
+                departmentsToolStripMenuItem,
+                usersToolStripMenuItem
+            });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -55,7 +60,11 @@
             // 
             // productsToolStripMenuItem
             // 
-            productsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productManagementToolStripMenuItem, supplyManagementToolStripMenuItem, tabControlToolStripMenuItem });
+            productsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
+                productManagementToolStripMenuItem,
+                supplyManagementToolStripMenuItem,
+                tabControlToolStripMenuItem
+            });
             productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             productsToolStripMenuItem.Size = new Size(66, 20);
             productsToolStripMenuItem.Text = "Products";
@@ -95,13 +104,26 @@
             // 
             // departmentsToolStripMenuItem
             // 
+            departmentsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
+                customerToolStripMenuItem // Fixed menu item for customer
+            });
             departmentsToolStripMenuItem.Name = "departmentsToolStripMenuItem";
             departmentsToolStripMenuItem.Size = new Size(87, 20);
             departmentsToolStripMenuItem.Text = "Departments";
             // 
+            // customerToolStripMenuItem
+            // 
+            customerToolStripMenuItem.Name = "customerToolStripMenuItem";
+            customerToolStripMenuItem.Size = new Size(180, 22);
+            customerToolStripMenuItem.Text = "Customer";
+            customerToolStripMenuItem.Click += customerToolStripMenuItem_Click;
+            // 
             // usersToolStripMenuItem
             // 
-            usersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem });
+            usersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
+                userManagementToolStripMenuItem,
+                logOutToolStripMenuItem
+            });
             usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             usersToolStripMenuItem.Size = new Size(47, 20);
             usersToolStripMenuItem.Text = "Users";
@@ -113,36 +135,18 @@
             userManagementToolStripMenuItem.Text = "User Management";
             userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 
-            // customersToolStripMenuItem
+            // logOutToolStripMenuItem
             // 
-            customersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { customerManagementToolStripMenuItem });
-            customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-            customersToolStripMenuItem.Size = new Size(71, 20);
-            customersToolStripMenuItem.Text = "Customer";
-            // 
-            // customerManagementToolStripMenuItem
-            // 
-            customerManagementToolStripMenuItem.Name = "customerManagementToolStripMenuItem";
-            customerManagementToolStripMenuItem.Size = new Size(200, 22);
-            customerManagementToolStripMenuItem.Text = "Customer Management";
-            customerManagementToolStripMenuItem.Click += customerManagementToolStripMenuItem_Click;
-            // 
-            // btnLoginLogout
-            // 
-            btnLoginLogout.Location = new Point(713, 27);
-            btnLoginLogout.Name = "btnLoginLogout";
-            btnLoginLogout.Size = new Size(75, 23);
-            btnLoginLogout.TabIndex = 2;
-            btnLoginLogout.Text = "Login";
-            btnLoginLogout.UseVisualStyleBackColor = true;
-            btnLoginLogout.Click += btnLoginLogout_Click;
+            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            logOutToolStripMenuItem.Size = new Size(171, 22);
+            logOutToolStripMenuItem.Text = "Log Out";
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click_1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnLoginLogout);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
@@ -166,9 +170,8 @@
         private ToolStripMenuItem userManagementToolStripMenuItem;
         private ToolStripMenuItem productManagementToolStripMenuItem;
         private ToolStripMenuItem supplyManagementToolStripMenuItem;
-        private Button btnLoginLogout;
         private ToolStripMenuItem tabControlToolStripMenuItem;
-        private ToolStripMenuItem customersToolStripMenuItem;
-        private ToolStripMenuItem customerManagementToolStripMenuItem;
+        private ToolStripMenuItem logOutToolStripMenuItem;
+        private ToolStripMenuItem customerToolStripMenuItem;
     }
 }

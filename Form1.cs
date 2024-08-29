@@ -11,15 +11,13 @@ namespace SupplyTracker
         {
             InitializeComponent();
             this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             // Disable all controls except the Login/Logout button
             SetControlsEnabled(false);
-            
+
             LoginForm loginForm = new LoginForm();
             this.Enabled = false;
             // Keep showing the login form until success or cancel (exit) the program.
@@ -27,17 +25,18 @@ namespace SupplyTracker
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
-                    btnLoginLogout.Text = "Logout";
+                    logOutToolStripMenuItem.Text = "Logout";
                     SetControlsEnabled(true); // Enable all features after login
                     this.Enabled = true;
                     break;
                 }
                 else if (loginForm.ShowDialog() == DialogResult.Cancel)
                 {
-                    Application.Exit();// Exit the program
+                    Application.Exit(); // Exit the program
                 }
             }
         }
+
         /// <summary>
         /// Allow or disallow users to use the form
         /// </summary>
@@ -46,12 +45,12 @@ namespace SupplyTracker
         {
             foreach (Control control in this.Controls)
             {
-                if (control != btnLoginLogout)
+                if (control != logOutToolStripMenuItem)
                 {
                     control.Enabled = enabled;
                 }
 
-                btnLoginLogout.Enabled = true; // This needs to be hard coded true to keep the function working
+                logOutToolStripMenuItem.Enabled = true; // Ensure the Logout button is always enabled
             }
         }
 
@@ -64,7 +63,6 @@ namespace SupplyTracker
         {
             // Open the product form using generic T structure
             openChildForm<ProductForm>();
-
         }
 
         /// <summary>
@@ -78,24 +76,6 @@ namespace SupplyTracker
             openChildForm<UserForm>();
         }
 
-
-        private void btnLoginLogout_Click(object sender, EventArgs e)
-        {
-            if (btnLoginLogout.Text == "Logout")
-            {
-                LoggedInUser = null;
-                btnLoginLogout.Text = "Login";
-                SetControlsEnabled(false);
-            }
-            else
-            {
-                // Restart the application
-                Application.Restart();
-                Environment.Exit(0); // Ensure the current instance exits
-            }
-        }
-
-
         private void supplyManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm<SupplyForm>();
@@ -108,6 +88,27 @@ namespace SupplyTracker
         }
 
         private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm<CustomerForm>();
+        }
+
+        private void logOutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (logOutToolStripMenuItem.Text == "Logout")
+            {
+                LoggedInUser = null;
+                logOutToolStripMenuItem.Text = "Login";
+                SetControlsEnabled(false);
+            }
+            else
+            {
+                // Restart the application
+                Application.Restart();
+                Environment.Exit(0); // Ensure the current instance exits
+            }
+        }
+
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm<CustomerForm>();
         }
@@ -135,4 +136,3 @@ namespace SupplyTracker
         }
     }
 }
-
