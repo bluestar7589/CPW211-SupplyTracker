@@ -25,7 +25,7 @@ namespace SupplyTracker
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
-                    logOutToolStripMenuItem.Text = "Logout";
+                    logoutToolStripMenuItem1.Text = "Logout";
                     SetControlsEnabled(true); // Enable all features after login
                     this.Enabled = true;
                     break;
@@ -43,15 +43,26 @@ namespace SupplyTracker
         /// <param name="enabled"></param>
         private void SetControlsEnabled(bool enabled)
         {
+            // Enable or disable all controls in the form except the menu strip
             foreach (Control control in this.Controls)
             {
-                if (control != logOutToolStripMenuItem)
+                if (!(control is MenuStrip)) // Exclude MenuStrip from being disabled
                 {
                     control.Enabled = enabled;
                 }
-
-                logOutToolStripMenuItem.Enabled = true; // Ensure the Logout button is always enabled
             }
+
+            // Handle enabling/disabling ToolStripMenuItems separately
+            foreach (ToolStripMenuItem menuItem in menuStrip1.Items)
+            {
+                if (menuItem != logoutToolStripMenuItem1)
+                {
+                    menuItem.Enabled = enabled;
+                }
+            }
+
+            // Always ensure the logout/login button is enabled
+            logoutToolStripMenuItem1.Enabled = true;
         }
 
         /// <summary>
@@ -92,12 +103,17 @@ namespace SupplyTracker
             openChildForm<CustomerForm>();
         }
 
-        private void logOutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (logOutToolStripMenuItem.Text == "Logout")
+            openChildForm<CustomerForm>();
+        }
+
+        private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (logoutToolStripMenuItem1.Text == "Logout")
             {
                 LoggedInUser = null;
-                logOutToolStripMenuItem.Text = "Login";
+                logoutToolStripMenuItem1.Text = "Login";
                 SetControlsEnabled(false);
             }
             else
@@ -108,10 +124,11 @@ namespace SupplyTracker
             }
         }
 
-        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm<CustomerForm>();
         }
+
 
         /// <summary>
         /// This method to open the child form, as well as check if it is already open, it will not open another form
