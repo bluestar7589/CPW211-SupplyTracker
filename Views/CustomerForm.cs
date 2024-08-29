@@ -20,7 +20,6 @@ namespace SupplyTracker.Views
         {
             InitializeComponent();
             _currentUser = Form1.LoggedInUser; // Get the logged-in user
-
         }
 
         private void CustomerForm_Load(object sender, EventArgs e)
@@ -45,24 +44,52 @@ namespace SupplyTracker.Views
             {
                 Customer customer = new Customer()
                 {
-                    // CustomerID is left out as it is generated automatically by the database
+                    // If there is a customer selected (meaning updating) then CustomerID gets the value the customer has.
+                    // If not it will generate one in the database
+                    CustomerID = lstCustomer.SelectedItems.Count > 0 ? ((Customer)lstCustomer.SelectedItems[0].Tag).CustomerID : 0,
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
-                    DepartmentCode = int.Parse(txtDepartmentCode.Text),
+                    DepartmentCode = int.Parse(cboDepartmentCode.Text),
                     PhoneNumber = txtPhoneNumber.Text,
                     Position = cboPosition.Text
                 };
+
+                if (btnAdd.Text.Equals("Add"))
+                {
+                    CustomerDB.AddCustomer(customer);
+                }
+                else
+                {
+                    CustomerDB.UpdateCustomer(customer);
+                }
+
+                LoadCustomerList();
+                ResetForm();
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (lstCustomer.SelectedItems.Count > 0)
+            {
+                var customer = (Customer)lstCustomer.SelectedItems[0].Tag;
 
+                if (customer != null)
+                {
+                    CustomerDB.DeleteCustomer(customer);
+                }
+                LoadCustomerList();
+                ResetForm();
+            }
+            else
+            {
+                MessageBox.Show("Select the customer that you want to delete", "Error");
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            ResetForm();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -118,7 +145,7 @@ namespace SupplyTracker.Views
         {
             txtFirstName.Text = string.Empty;
             txtLastName.Text = string.Empty;
-            txtDepartmentCode.Text = string.Empty;
+            cboDepartmentCode.Text = string.Empty;
             txtPhoneNumber.Text = string.Empty;
             cboPosition.Text = string.Empty;
         }
@@ -143,9 +170,9 @@ namespace SupplyTracker.Views
                 return false;
             }
 
-            if (string.IsNullOrEmpty(txtDepartmentCode.Text))
+            if (string.IsNullOrEmpty(cboDepartmentCode.Text))
             {
-                txtDepartmentCode.Focus();
+                cboDepartmentCode.Focus();
                 MessageBox.Show("Input customer's department code", "Error");
                 return false;
             }
@@ -183,7 +210,7 @@ namespace SupplyTracker.Views
                     txtFirstName.Text = customer.FirstName;
                     txtLastName.Text = customer.LastName;
                     txtPhoneNumber.Text = customer.PhoneNumber;
-                    txtDepartmentCode.Text = customer.DepartmentCode.ToString();
+                    cboDepartmentCode.Text = customer.DepartmentCode.ToString();
                     cboPosition.Text = customer.Position;
                 }
             }
@@ -193,5 +220,6 @@ namespace SupplyTracker.Views
                 ResetForm();
             }
         }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace SupplyTracker
+namespace SupplyTracker
 {
     partial class Form1
     {
@@ -36,16 +36,22 @@
             vendorsToolStripMenuItem = new ToolStripMenuItem();
             ordersToolStripMenuItem = new ToolStripMenuItem();
             departmentsToolStripMenuItem = new ToolStripMenuItem();
+            customerToolStripMenuItem = new ToolStripMenuItem(); // Fixed menu item for customer
             usersToolStripMenuItem = new ToolStripMenuItem();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
             logOutToolStripMenuItem = new ToolStripMenuItem();
-            customerToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { productsToolStripMenuItem, vendorsToolStripMenuItem, ordersToolStripMenuItem, departmentsToolStripMenuItem, usersToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] {
+                productsToolStripMenuItem,
+                vendorsToolStripMenuItem,
+                ordersToolStripMenuItem,
+                departmentsToolStripMenuItem,
+                usersToolStripMenuItem
+            });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -54,7 +60,11 @@
             // 
             // productsToolStripMenuItem
             // 
-            productsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productManagementToolStripMenuItem, supplyManagementToolStripMenuItem, tabControlToolStripMenuItem });
+            productsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
+                productManagementToolStripMenuItem,
+                supplyManagementToolStripMenuItem,
+                tabControlToolStripMenuItem
+            });
             productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             productsToolStripMenuItem.Size = new Size(66, 20);
             productsToolStripMenuItem.Text = "Products";
@@ -94,31 +104,12 @@
             // 
             // departmentsToolStripMenuItem
             // 
-            departmentsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { customerToolStripMenuItem });
+            departmentsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
+                customerToolStripMenuItem // Fixed menu item for customer
+            });
             departmentsToolStripMenuItem.Name = "departmentsToolStripMenuItem";
             departmentsToolStripMenuItem.Size = new Size(87, 20);
             departmentsToolStripMenuItem.Text = "Departments";
-            // 
-            // usersToolStripMenuItem
-            // 
-            usersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userManagementToolStripMenuItem, logOutToolStripMenuItem });
-            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            usersToolStripMenuItem.Size = new Size(47, 20);
-            usersToolStripMenuItem.Text = "Users";
-            // 
-            // userManagementToolStripMenuItem
-            // 
-            userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            userManagementToolStripMenuItem.Size = new Size(180, 22);
-            userManagementToolStripMenuItem.Text = "User Management";
-            userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
-            // 
-            // logOutToolStripMenuItem
-            // 
-            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            logOutToolStripMenuItem.Size = new Size(180, 22);
-            logOutToolStripMenuItem.Text = "Log Out";
-            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click_1;
             // 
             // customerToolStripMenuItem
             // 
@@ -126,6 +117,30 @@
             customerToolStripMenuItem.Size = new Size(180, 22);
             customerToolStripMenuItem.Text = "Customer";
             customerToolStripMenuItem.Click += customerToolStripMenuItem_Click;
+            // 
+            // usersToolStripMenuItem
+            // 
+            usersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
+                userManagementToolStripMenuItem,
+                logOutToolStripMenuItem
+            });
+            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            usersToolStripMenuItem.Size = new Size(47, 20);
+            usersToolStripMenuItem.Text = "Users";
+            // 
+            // userManagementToolStripMenuItem
+            // 
+            userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
+            userManagementToolStripMenuItem.Size = new Size(171, 22);
+            userManagementToolStripMenuItem.Text = "User Management";
+            userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
+            // 
+            // logOutToolStripMenuItem
+            // 
+            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            logOutToolStripMenuItem.Size = new Size(171, 22);
+            logOutToolStripMenuItem.Text = "Log Out";
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click_1;
             // 
             // Form1
             // 
